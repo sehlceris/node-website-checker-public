@@ -1,11 +1,11 @@
 import {BoundLogger, LogService} from './utilities/log.service';
 import {ConfigurationService} from './utilities/configuration.service';
-import {injectable} from 'tsyringe';
+import {singleton} from 'tsyringe';
 import * as moment from 'moment';
 import {DiscordService} from './discord.service';
 import {delayPromise} from './utilities/promise-utils';
 
-@injectable()
+@singleton()
 export class WebsiteCheckService {
   private log: BoundLogger = this.logService.bindToNamespace(this.constructor.name);
 

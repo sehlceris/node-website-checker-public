@@ -1,13 +1,13 @@
 import {BoundLogger, LogService} from './utilities/log.service';
 import {ConfigurationService} from './utilities/configuration.service';
-import {injectable} from 'tsyringe';
+import {singleton} from 'tsyringe';
 import * as fs from 'fs';
 import {DiscordService} from './discord.service';
 import {trimString} from './utilities/trim-string';
 import {delayPromise} from './utilities/promise-utils';
 import {WebsiteCheckService} from './website-check.service';
 
-@injectable()
+@singleton()
 export class Application {
   protected log: BoundLogger = this.logService.bindToNamespace(this.constructor.name);
 

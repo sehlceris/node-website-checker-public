@@ -1,11 +1,11 @@
 import {BoundLogger, LogService} from './utilities/log.service';
 import {ConfigurationService} from './utilities/configuration.service';
-import {injectable} from 'tsyringe';
+import {singleton} from 'tsyringe';
 import * as Discord from 'discord.js';
 import {WebhookClient} from 'discord.js';
 import {delayPromise} from './utilities/promise-utils';
 
-@injectable()
+@singleton()
 export class DiscordService {
   private log: BoundLogger = this.logService.bindToNamespace(this.constructor.name);
   private webhookClient: WebhookClient;
@@ -16,10 +16,10 @@ export class DiscordService {
     const webhookId = this.configurationService.config.discordConfig.webhookId;
     const webhookToken = this.configurationService.config.discordConfig.webhookToken;
 
-    this.log.info(`initializing discord api using webhookId ${webhookId}`);
-
     this.webhookClient = new Discord.WebhookClient(webhookId, webhookToken);
     await delayPromise(1000);
+
+    this.log.info(`initialized discord api using webhookId ${webhookId}`);
   }
 
   async sendMessage(message: string) {

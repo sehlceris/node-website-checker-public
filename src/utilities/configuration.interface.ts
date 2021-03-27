@@ -1,4 +1,3 @@
-import {IEbayItemKeywordSearchParams} from '../ebay-finder-service';
 import {LogLevel} from './log.service';
 
 export interface IAppConfiguration {

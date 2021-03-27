@@ -1,5 +1,5 @@
-import {PageCheckFunction} from 'src/types';
-import {delayPromise} from 'src/utilities/promise-utils';
+import {PageCheckFunction} from 'types';
+import {delayPromise} from '../utilities/promise-utils';
 
 const reloadAndReadErrorContent = async (page) => {
   await page.reload({waitUntil: ['networkidle2', 'domcontentloaded']});

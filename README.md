@@ -1,8 +1,6 @@
-# node-used-item-finder
+# node-website-watcher
 
-Finds used items from various listing services, and sends alerts via push notifications
-
-This is only designed to find "buy it now" or "fixed price" types of listings, as the intent is to snipe a good deal before others see it.
+Framework for watching websites for certain conditions and sending alerts on Discord
 
 ## getting started
 
@@ -23,4 +21,29 @@ To build, run:
 
 ```bash
 npm run build
+```
+
+## making the program a system service that runs on startup
+
+```bash
+SERVICE_NAME=node-website-watcher
+
+echo "
+[Unit]
+Description=$SERVICE_NAME
+
+[Service]
+Restart=always
+ExecStart=/usr/local/bin/npm --prefix $PWD run start:prod
+
+[Install]
+WantedBy=default.target
+" | sudo tee /etc/systemd/system/$SERVICE_NAME.service  > /dev/null
+
+sudo systemctl stop $SERVICE_NAME
+sudo systemctl disable $SERVICE_NAME
+sudo systemctl daemon-reload
+sudo systemctl enable $SERVICE_NAME
+sudo systemctl start $SERVICE_NAME
+sudo systemctl status $SERVICE_NAME
 ```

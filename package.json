@@ -11,7 +11,7 @@
     "start": "npm run start:nodemon",
     "start:nodemon": "nodemon",
     "start:ts": "ts-node -r tsconfig-paths/register src/main.ts",
-    "start:prod": "node dist/main.js 2>&1  | tee -a log.log",
+    "start:prod": "node -r tsconfig-paths/register dist/main.js 2>&1  | tee -a log.log",
     "start:debug": "nodemon --config nodemon-debug.json",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "prettier": "prettier '{src,e2e}/**/*.{ts,js,json,scss,css,html,graphql,md}' --write",

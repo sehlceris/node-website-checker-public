@@ -36,7 +36,7 @@ export const uciHealthVaccineChecker: PageCheckFunction = async (page, cb, canCh
     if (!errorContent || errorContent.indexOf(checkText) < 0) {
       cb(`uciHealthVaccineChecker: no error found`);
     } else {
-      cb(`uciHealthVaccineChecker: current page content: ${errorContent}`);
+      console.log(`uciHealthVaccineChecker: current page content: ${errorContent}`);
     }
   }
 };

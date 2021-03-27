@@ -1,0 +1,50 @@
+{
+  "name": "node-website-watcher",
+  "version": "0.1.0",
+  "description": "",
+  "author": "",
+  "license": "",
+  "scripts": {
+    "build": "rimraf dist; tsc -p tsconfig.build.json",
+    "deploy": "./deploy.sh",
+    "build:deploy": "npm run build && ./deploy.sh",
+    "start": "npm run start:nodemon",
+    "start:nodemon": "nodemon",
+    "start:ts": "ts-node -r tsconfig-paths/register src/main.ts",
+    "start:prod": "node dist/main.js 2>&1  | tee -a log.log",
+    "start:debug": "nodemon --config nodemon-debug.json",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "prettier": "prettier '{src,e2e}/**/*.{ts,js,json,scss,css,html,graphql,md}' --write"
+  },
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "moment": "^2.25.3",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.5.5",
+    "tsyringe": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.4",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.2",
+    "nodemon": "^2.0.3",
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2",
+    "ts-node": "^8.10.1",
+    "tsconfig-paths": "^3.9.0",
+    "tslint": "^6.1.2",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "post-commit": "git update-index --again"
+    }
+  },
+  "lint-staged": {
+    "{src,}/**/*.{ts,js,json,scss,css,html,graphql,md}": [
+      "prettier --write"
+    ]
+  }
+}

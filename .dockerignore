@@ -1,0 +1,22 @@
+# system/platform/IDE reserved
+.idea/
+.git/
+.vscode/
+.DS_Store
+node_modules/
+
+# local developer files
+local/
+
+# temporary deployment directory
+deploy/
+
+# generated files
+dist/
+*.tar
+*.tar.gz
+
+# config and credentials
+.env
+secrets/
+config.json

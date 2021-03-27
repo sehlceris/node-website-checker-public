@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "tslint:latest",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "curly": true,
+    "only-arrow-functions": false,
+    "no-console": false,
+    "max-classes-per-file": false
+  }
+}

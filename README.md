@@ -27,12 +27,16 @@ npm run build
 
 ```bash
 SERVICE_NAME=node-website-watcher
+WHOAMI=$(whoami)
+GROUP=$WHOAMI
 
 echo "
 [Unit]
 Description=$SERVICE_NAME
 
 [Service]
+User=$WHOAMI
+Group=$GROUP
 Restart=always
 ExecStart=/usr/local/bin/npm --prefix $PWD run start:prod
 

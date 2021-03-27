@@ -1,56 +1,12 @@
 {
   "logLevel": 3,
-  "localStartTime": "07:30",
-  "localEndTime": "23:30",
-  "ebayConfig": {
-    "environment": "SANDBOX",
-    "sandboxClientId": "aaaaaaaaaaaaaaaaaaaaaa",
-    "sandboxClientSecret": "aaaaaaaaaaaaaaaaaaaaaa",
-    "productionClientId": "aaaaaaaaaaaaaaaaaaaaaa",
-    "productionClientSecret": "aaaaaaaaaaaaaaaaaaaaaa",
-    "searchIntervalMinutes": 60,
-    "intervalBetweenSearchesMs": 360000,
-    "itemsToSearch": [
-      {
-        "name": "x-t3 camera",
-        "categoryId": "31388",
-        "keywords": "(x-t3,xt3 camera,xt-3 camera)",
-        "minPrice": 650,
-        "maxPrice": 900
-      },
-      {
-        "name": "x-t3 camera with lens",
-        "categoryId": "31388",
-        "keywords": "(x-t3 xf,xt3 camera xf,xt-3 camera xf)",
-        "minPrice": 700,
-        "maxPrice": 1100
-      },
-      {
-        "name": "x-t2 camera",
-        "categoryId": "31388",
-        "keywords": "(x-t2,xt2 camera,xt-2 camera)",
-        "minPrice": 350,
-        "maxPrice": 500
-      },
-      {
-        "name": "x-t2 camera with lens",
-        "categoryId": "31388",
-        "keywords": "(x-t2 xf,xt2 camera xf,xt-2 camera xf)",
-        "minPrice": 400,
-        "maxPrice": 700
-      },
-      {
-        "name": "xf50mmf2",
-        "categoryId": "3323",
-        "keywords": "(xf50mmf2, xf 50mm f2, xf50mm, fuji 50mm f2)",
-        "minPrice": 175,
-        "maxPrice": 300
-      }
-    ]
-  },
   "discordConfig": {
     "enabled": true,
     "webhookId": "aaaaaaaaaaaaaaaaaaaaaa",
     "webhookToken": "aaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "searchConfig": {
+    "localStartTime": "07:30",
+    "localEndTime": "23:30"
   }
 }

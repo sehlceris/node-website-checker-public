@@ -14,33 +14,28 @@
     "start:prod": "node dist/main.js 2>&1  | tee -a log.log",
     "start:debug": "nodemon --config nodemon-debug.json",
     "lint": "tslint -p tsconfig.json -c tslint.json",
-    "prettier": "prettier '{src,e2e}/**/*.{ts,js,json,scss,css,html,graphql,md}' --write"
+    "prettier": "prettier '{src,e2e}/**/*.{ts,js,json,scss,css,html,graphql,md}' --write",
+    "postinstall": "husky install"
   },
   "dependencies": {
-    "discord.js": "^12.2.0",
-    "moment": "^2.25.3",
+    "discord.js": "^12.5.1",
+    "moment": "^2.29.1",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^6.5.5",
-    "tsyringe": "^4.1.0"
+    "rxjs": "^6.6.6",
+    "tsyringe": "^4.5.0"
   },
   "devDependencies": {
-    "@types/node": "^13.13.4",
-    "husky": "^4.2.5",
-    "lint-staged": "^10.2.2",
-    "nodemon": "^2.0.3",
-    "prettier": "^2.0.5",
+    "@types/node": "^14.14.37",
+    "husky": "^5.2.0",
+    "lint-staged": "^10.5.4",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
-    "ts-node": "^8.10.1",
+    "ts-node": "^9.1.1",
     "tsconfig-paths": "^3.9.0",
     "tslint": "^6.1.2",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.8.3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "post-commit": "git update-index --again"
-    }
+    "typescript": "^4.2.3"
   },
   "lint-staged": {
     "{src,}/**/*.{ts,js,json,scss,css,html,graphql,md}": [

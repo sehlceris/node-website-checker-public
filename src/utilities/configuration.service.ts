@@ -1,13 +1,13 @@
 import * as fs from 'fs';
 import {IAppConfiguration} from './configuration.interface';
-import {injectable} from 'tsyringe';
+import {singleton} from 'tsyringe';
 
 const CONFIG_PATH = './config.json';
 const config: IAppConfiguration = Object.freeze(
   JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf8')),
 ) as IAppConfiguration;
 
-injectable();
+singleton();
 export class ConfigurationService {
   private _config: IAppConfiguration;
 

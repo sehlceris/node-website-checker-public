@@ -3,14 +3,13 @@ import {ConfigurationService} from './utilities/configuration.service';
 import {singleton} from 'tsyringe';
 import * as moment from 'moment';
 import {DiscordService} from './discord.service';
-import {delayPromise} from './utilities/promise-utils';
 import * as puppeteer from 'puppeteer';
 import checkers from './checkers';
 import {PageCheckFunction} from './types';
 
 @singleton()
 export class WebsiteCheckService {
-  private log: BoundLogger = this.logService.bindToNamespace(this.constructor.name);
+  private log: BoundLogger = LogService.getInstance().bindToNamespace(this.constructor.name);
 
   protected startTime: string;
   protected endTime: string;
@@ -21,13 +20,12 @@ export class WebsiteCheckService {
   protected browser: puppeteer.Browser;
 
   constructor(
-    private logService: LogService,
     private configurationService: ConfigurationService,
     private discordService: DiscordService,
   ) {}
 
   async init() {
-    this.log.info(`initializing WebsiteCheckService`);
+    this.log.debug(`initializing WebsiteCheckService`);
 
     this.startTime = this.configurationService.config.searchConfig.localStartTime;
     this.endTime = this.configurationService.config.searchConfig.localEndTime;

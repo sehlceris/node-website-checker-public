@@ -1,7 +1,7 @@
 import {Observable} from 'rxjs';
 import {OperatorFunction} from 'rxjs/internal/types';
 import {tap} from 'rxjs/operators';
-import {injectable} from 'tsyringe';
+import {singleton} from 'tsyringe';
 
 export enum LogLevel {
   DEBUG = 4,
@@ -19,7 +19,7 @@ logLevelToString.set(LogLevel.ERROR, 'ERROR');
 export type LogFunction = (message) => void;
 export type LogFormatter = (namespace: string, message: string, level: LogLevel) => string;
 
-injectable();
+singleton();
 export class LogService {
   private logLevel: LogLevel = LogLevel.INFO;
   private logFn: LogFunction = LogService.defaultLogFunction;

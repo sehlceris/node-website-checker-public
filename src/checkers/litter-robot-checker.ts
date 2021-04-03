@@ -8,25 +8,25 @@ import {
   runContinualPageCheckSimple,
 } from './utilities';
 
-const log = LogService.getInstance().bindToNamespace('UCIHealthVaccine');
+const log = LogService.getInstance().bindToNamespace('LitterRobot');
 
-const CHECK_TEXT = 'At this time, we don’t have any appointments available';
+const CHECK_TEXT = 'Out of Stock';
 const URI =
-  'https://mychart-openscheduling.et0502.epichosted.com/uci/SignupAndSchedule/EmbeddedSchedule?vt=8631&dept=80110004&payor=8070,8073,8011,8078,8093,8026,8030,8035,8036,8044,8241,8158,8054,-1,-2,-3&lang=en-US';
-const ALERT_MESSAGE = 'uci health vaccine site has changed';
+  'https://www.litter-robot.com/reconditioned-litter-robot-units/litter-robot-3-connect-reconditioned.html';
+const ALERT_MESSAGE = 'litter robot alert';
 
 const CHECK_INTERVAL = 60 * 60 * 60; // 1 hour
 
 const checkForPageAlert = async (page: Page) => {
   await reloadPage(page);
   const textContent = await page.evaluate(
-    () => document.querySelector('.errormessage').textContent,
+    () => document.querySelector('.availability').textContent,
   );
-  log.debug(`uci health content: ${textContent}`);
+  log.debug(`litter robot content: ${textContent}`);
   return !containsTextCaseInsensitive(textContent, CHECK_TEXT);
 };
 
-export const uciHealthVaccineChecker: PageCheckFunction = async (page, cb, canCheck) => {
+export const litterRobotChecker: PageCheckFunction = async (page, cb, canCheck) => {
   const params: ContinualPageCheckParams = {
     uri: URI,
     page,
@@ -37,5 +37,6 @@ export const uciHealthVaccineChecker: PageCheckFunction = async (page, cb, canCh
     alertMessage: ALERT_MESSAGE,
     log,
   };
+
   runContinualPageCheckSimple(params);
 };

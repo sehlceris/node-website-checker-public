@@ -7,10 +7,10 @@ import {delayPromise} from './utilities/promise-utils';
 
 @singleton()
 export class DiscordService {
-  private log: BoundLogger = this.logService.bindToNamespace(this.constructor.name);
+  private log: BoundLogger = LogService.getInstance().bindToNamespace(this.constructor.name);
   private webhookClient: WebhookClient;
 
-  constructor(private logService: LogService, private configurationService: ConfigurationService) {}
+  constructor(private configurationService: ConfigurationService) {}
 
   async init() {
     const webhookId = this.configurationService.config.discordConfig.webhookId;
@@ -19,7 +19,7 @@ export class DiscordService {
     this.webhookClient = new Discord.WebhookClient(webhookId, webhookToken);
     await delayPromise(1000);
 
-    this.log.info(`initialized discord api using webhookId ${webhookId}`);
+    this.log.debug(`initialized discord api using webhookId ${webhookId}`);
   }
 
   async sendMessage(message: string) {

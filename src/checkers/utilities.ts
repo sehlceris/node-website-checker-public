@@ -1,6 +1,6 @@
 import {Page} from 'puppeteer';
-import {BoundLogger} from 'utilities/log.service';
-import {delayPromise} from 'utilities/promise-utils';
+import {BoundLogger} from '../utilities/log.service';
+import {delayPromise} from '../utilities/promise-utils';
 
 export const reloadPage = async (page: Page) => {
   await page.reload({waitUntil: ['networkidle2', 'domcontentloaded']});

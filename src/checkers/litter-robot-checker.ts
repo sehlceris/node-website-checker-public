@@ -15,7 +15,7 @@ const URI =
   'https://www.litter-robot.com/reconditioned-litter-robot-units/litter-robot-3-connect-reconditioned.html';
 const ALERT_MESSAGE = 'litter robot alert';
 
-const CHECK_INTERVAL = 60 * 60 * 60; // 1 hour
+const CHECK_INTERVAL = 60 * 60 * 1000; // 1 hour
 
 const checkForPageAlert = async (page: Page) => {
   await reloadPage(page);

@@ -14,6 +14,7 @@ export const containsTextCaseInsensitive = (text: string, search: string): boole
 };
 
 export interface ContinualPageCheckParams {
+  namespace: string;
   uri: string;
   page: Page;
   checkInterval: number;
@@ -25,6 +26,7 @@ export interface ContinualPageCheckParams {
 }
 
 export const runContinualPageCheckSimple = async ({
+  namespace,
   uri,
   page,
   checkInterval,
@@ -41,14 +43,19 @@ export const runContinualPageCheckSimple = async ({
   await reloadPage(page);
   while (true) {
     if (canCheck()) {
-      const hasAlert: boolean = await pageCheckFn(page);
-      if (hasAlert) {
-        log.info('***** page alert: ' + alertMessage);
-      } else {
-        log.debug('no page alert');
+      try {
+        const hasAlert: boolean = await pageCheckFn(page);
+        if (hasAlert) {
+          log.info(`***** ${namespace} page alert: ${alertMessage}`);
+          cb(`${namespace} ${alertMessage}`);
+        } else {
+          log.debug(`${namespace} no page alert`);
+        }
+      } catch (e) {
+        cb(`${namespace} failed to run check: ${e.toString()}`);
       }
     } else {
-      log.debug(`abort check (canCheck is false)`);
+      log.debug(`${namespace} abort check (canCheck is false)`);
     }
     await delayPromise(checkInterval);
   }

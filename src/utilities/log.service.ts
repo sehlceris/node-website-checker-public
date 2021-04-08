@@ -58,7 +58,9 @@ export class LogService {
   }
 
   public static defaultLogFormatter(namespace: string, message: string, level: LogLevel): string {
-    return `[${LogService.logLevelToString(level)}] [${namespace}] ${message}`;
+    return `${new Date().toISOString()} [${LogService.logLevelToString(
+      level,
+    )}] [${namespace}] ${message}`;
   }
 
   public static logLevelToString(level: LogLevel): string {
